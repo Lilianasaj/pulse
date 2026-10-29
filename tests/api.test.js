@@ -342,7 +342,8 @@ test("HTTP LAN deployments keep assets on HTTP; HTTPS deployments retain upgrade
     });
     await new Promise((resolve) => service.http.listen(0, "127.0.0.1", resolve));
     try {
-      const response = await fetch(`http://127.0.0.1:${service.http.address().port}/`);
+      const response = await fetch(`http://127.0.0.1:${service.http.address().port}/api/health`);
+      assert.equal(response.status, 200);
       const policy = response.headers.get("content-security-policy");
       assert.ok(policy?.includes("script-src 'self'"), "Keep the script policy enabled");
       assert.equal(
