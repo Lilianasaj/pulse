@@ -12,8 +12,8 @@ services:
       MESSAGE_RATE_LIMIT: ${MESSAGE_RATE_LIMIT:-120}
       ELASTICSEARCH_URL: ${ELASTICSEARCH_URL:-}
     depends_on:
-      postgres: {condition: service_healthy}
-      redis: {condition: service_healthy}
+      postgres: { condition: service_healthy }
+      redis: { condition: service_healthy }
   postgres:
     image: postgres:17-alpine
     restart: unless-stopped
@@ -29,7 +29,14 @@ services:
   redis:
     image: redis:7-alpine
     restart: unless-stopped
-    command: ["redis-server", "--maxmemory", "128mb", "--maxmemory-policy", "allkeys-lru"]
+    command:
+      [
+        "redis-server",
+        "--maxmemory",
+        "128mb",
+        "--maxmemory-policy",
+        "allkeys-lru",
+      ]
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 5s

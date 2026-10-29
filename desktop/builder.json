@@ -14,18 +14,12 @@
     "main": "desktop/main.cjs"
   },
   "linux": {
-    "target": [
-      "AppImage"
-    ]
+    "target": ["AppImage"]
   },
   "win": {
-    "target": [
-      "nsis"
-    ]
+    "target": ["nsis"]
   },
   "mac": {
-    "target": [
-      "dmg"
-    ]
+    "target": ["dmg"]
   }
 }

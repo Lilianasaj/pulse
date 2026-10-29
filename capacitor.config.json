@@ -1,1 +1,7 @@
-{"appId":"dev.pulse.chat","appName":"Pulse Chat","webDir":"dist","server":{"url":"http://10.0.2.2:3000","cleartext":true},"android":{"allowMixedContent":false}}
+{
+  "appId": "dev.pulse.chat",
+  "appName": "Pulse Chat",
+  "webDir": "dist",
+  "server": { "url": "http://10.0.2.2:3000", "cleartext": true },
+  "android": { "allowMixedContent": false }
+}
