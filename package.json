@@ -1,0 +1,49 @@
+{
+  "name": "pulse-chat",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "dev": "node scripts/dev.js",
+    "build": "vite build",
+    "start": "node server/index.js",
+    "test": "node --test --test-concurrency=1 tests/*.test.js",
+    "load": "node scripts/load.js",
+    "desktop": "electron desktop/main.cjs",
+    "desktop:pack": "electron-builder --config desktop/builder.json",
+    "mobile:android": "cap open android",
+    "mobile:ios": "cap open ios",
+    "mobile:sync": "npm run build && cap sync",
+    "mobile:open": "cap open android",
+    "load:local": "node scripts/load-local.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "pg": "^8.16.3",
+    "ws": "^8.19.0",
+    "helmet": "^8.1.0",
+    "express-rate-limit": "^8.2.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "lucide-react": "^0.468.0",
+    "dotenv": "^17.2.3",
+    "redis": "^5.10.0",
+    "@capacitor/core": "^8.0.0",
+    "@capacitor/android": "^8.0.0",
+    "@capacitor/ios": "^8.0.0"
+  },
+  "devDependencies": {
+    "vite": "^7.3.1",
+    "@vitejs/plugin-react": "^5.1.1",
+    "electron": "^40.0.0",
+    "electron-builder": "^26.0.12",
+    "@capacitor/cli": "^8.0.0",
+    "@playwright/test": "^1.58.0"
+  },
+  "description": "Cross-platform channel chat: web, desktop and mobile",
+  "author": "Pulse Chat",
+  "license": "MIT"
+}
