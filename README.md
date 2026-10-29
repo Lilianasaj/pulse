@@ -159,21 +159,17 @@ TEST_DATABASE_URL=postgres://pulse:password@localhost:5432/pulse_test npm test
 
 ## GitHub и ветки
 
-В комплекте `repository.bundle` с полной Git-историей и ветками. Если проект скачан как ZIP без `.git`, восстановить репозиторий **в соседний каталог**:
+Репозиторий проекта: https://github.com/Lilianasaj/pulse
 
 ```bash
-git clone repository.bundle ../pulse-chat-repo
-cd ../pulse-chat-repo
+git clone https://github.com/Lilianasaj/pulse.git
+cd pulse
 git branch -a
-git remote rename origin archive
-git remote add origin https://github.com/YOUR_LOGIN/pulse-chat.git
-git push -u origin main
-for branch in develop feature/server feature/web feature/clients feature/infra; do
-  git push origin "refs/remotes/archive/$branch:refs/heads/$branch"
-done
 ```
 
-В PowerShell вместо shell-цикла выполнить `git push origin refs/remotes/archive/develop:refs/heads/develop` и аналогичную команду для каждой feature-ветки. GitHub-репозиторий предварительно создать в своём аккаунте. В этой среде проект не публиковался в пользовательском GitHub, доступ к нему не предоставлен.
+Ветки: `main` — готовая версия, `develop` — база для продолжения разработки, `feature/server`, `feature/web`, `feature/clients`, `feature/infra` — этапы реализации. Коммиты и связи слияний перенесены в GitHub с сохранением первоначального коммита репозитория. SHA перенесённых коммитов отличаются от исходного локального bundle.
+
+Архив первой выдачи содержит `repository.bundle` для восстановления исходной локальной истории без GitHub. При работе с этим репозиторием bundle не требуется.
 
 ## Демонстрация преподавателю
 
