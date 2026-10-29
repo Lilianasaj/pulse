@@ -1,0 +1,31 @@
+{
+  "appId": "dev.pulse.chat",
+  "productName": "Pulse Chat",
+  "directories": {
+    "output": "release"
+  },
+  "files": [
+    "desktop/main.cjs",
+    "desktop/config.json",
+    "package.json",
+    "!node_modules/**/*"
+  ],
+  "extraMetadata": {
+    "main": "desktop/main.cjs"
+  },
+  "linux": {
+    "target": [
+      "AppImage"
+    ]
+  },
+  "win": {
+    "target": [
+      "nsis"
+    ]
+  },
+  "mac": {
+    "target": [
+      "dmg"
+    ]
+  }
+}
