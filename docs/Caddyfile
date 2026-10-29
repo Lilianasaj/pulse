@@ -1,0 +1,4 @@
+# Replace domain and configure DNS before starting Caddy on the VM.
+chat.example.com {
+    reverse_proxy 127.0.0.1:3000
+}

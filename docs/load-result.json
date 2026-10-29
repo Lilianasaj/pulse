@@ -1,0 +1,15 @@
+{
+  "url": "http://127.0.0.1:41229",
+  "users": 5,
+  "attempted": 500,
+  "accepted": 500,
+  "errors": {},
+  "seconds": 2.8,
+  "messages_per_second": 178.4,
+  "latency_ms": {
+    "p50": 3,
+    "p95": 9,
+    "p99": 21
+  },
+  "websocket_deliveries": 2500
+}

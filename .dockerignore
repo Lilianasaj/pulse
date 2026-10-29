@@ -1,0 +1,8 @@
+node_modules
+.git
+.env
+data
+release
+android
+ios
+test-results
