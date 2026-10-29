@@ -45,7 +45,12 @@ export async function createApp(options = {}) {
   app.use(
     helmet({
       contentSecurityPolicy: {
-        directives: { "connect-src": ["'self'", "ws:", "wss:"] },
+        directives: {
+          "connect-src": ["'self'", "ws:", "wss:"],
+          // LAN demos use HTTP; upgrading their assets to HTTPS breaks Safari.
+          // Keep upgrades for public HTTPS deployments, including reverse proxies.
+          "upgrade-insecure-requests": new URL(origin).protocol === "https:" ? [] : null,
+        },
       },
     }),
   );

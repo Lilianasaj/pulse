@@ -333,3 +333,26 @@ test("WebSocket rejects unauthenticated and foreign-origin upgrades", async () =
     await f.close();
   }
 });
+
+test("HTTP LAN deployments keep assets on HTTP; HTTPS deployments retain upgrades", async () => {
+  for (const publicOrigin of ["http://192.168.1.210:3000", "https://chat.example.com"]) {
+    const service = await createApp({
+      db: await openDB({ url: "", file: ":memory:" }),
+      origin: publicOrigin,
+    });
+    await new Promise((resolve) => service.http.listen(0, "127.0.0.1", resolve));
+    try {
+      const response = await fetch(`http://127.0.0.1:${service.http.address().port}/`);
+      const policy = response.headers.get("content-security-policy");
+      assert.ok(policy?.includes("script-src 'self'"), "Keep the script policy enabled");
+      assert.equal(
+        policy.split(";").some((directive) => directive.trim() === "upgrade-insecure-requests"),
+        publicOrigin.startsWith("https://"),
+        `Unexpected HTTPS asset upgrade policy for ${publicOrigin}`,
+      );
+      await response.arrayBuffer();
+    } finally {
+      await service.close();
+    }
+  }
+});
